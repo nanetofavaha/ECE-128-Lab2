@@ -1,1 +1,24 @@
+module adder(
+        input A, B, Cin,
+        output Cout, S
+    );
+    
+    assign S = (A^B^Cin);
+    assign Cout = (A&Cin)|(B&Cin)|(A&B);
+    
+endmodule
+
+module Bit4_adder(
+        input [3:0] A,
+        input [3:0] B,
+        input cin,
+        output y0,y1,y2,y3,y4
+    );
+    wire c0,c1,c2;
+    adder a0(A[0], B[0], cin, c0, y0);
+    adder a1(A[1], B[1], c0, c1, y1);
+    adder a2(A[2], B[2], c1, c2, y2);
+    adder a3(A[3], B[3], c2, y4, y3);
+endmodule
+
 
