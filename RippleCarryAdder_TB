@@ -1,1 +1,17 @@
 
+module adder_tb;
+wire y0, y1, y2, y3 ,y4; //output 
+reg [3:0]a,b;
+reg cin; //input
+// Instantiate original module (named DUT {device under test}) 
+Bit4_adder uut (a,b,cin,cout,s);
+
+initial begin 
+       #10 a=4'b0000;b=4'b0000;cin=1'b0;
+       #10 a=4'b0000;b=4'b0001;
+       #10 a=4'b0001;b=4'b0001;
+       #10 a=4'b0001;b=4'b0000;
+#10 $stop;
+end 
+endmodule
+
